@@ -1,26 +1,0 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/product1
-    username: root
-    password: welcome
-  jpa:
-    hibernate.ddl-auto: update  
-    properties:
-       hibernate:
-          dialect:org.hibernate.dialect.MYSQL8Dialect
-  application:
-    name: om-products  config:    import: configserver:http://localhost:8888
-autoconfigure:
-      exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
-server:
-  port: 9000
-  
-     
-eureka:
- instance:
-    hostname: localhost
-    instance-id: ${spring.application.name}:${random.uuid}  
- client:
-       register-with-eureka: true
-       fetch-registry: true
