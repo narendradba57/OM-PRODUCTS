@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: API_GATEWAY  cloud:    gateway:      routes:      - id: OM-PRODUCTS
+        uri: lb://OM-PRODUCTS
+        predicates:
+          - Path=/product/{productId}
+      - id: OM-ORDERS
+        uri: lb://OM-ORDERS
+        predicates:
+          - Path=/order/sort/desc/totalprice,/order
+eureka:
+ instance:
+    hostname: localhost 
+    instance-id: ${spring.application.name}:${random.uuid}  
+ client:
+       register-with-eureka: true
+       fetch-registry: true
+ service-url:
+      defaultZone: http://localhost:8761    
+server:
+  port: 9191       
